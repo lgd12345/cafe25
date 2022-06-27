@@ -1,0 +1,374 @@
+/* 폰트 링크 */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+/* 자주쓰는 색을 변수로 --변수명 */
+:root {
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
+}
+
+/* 각 태그들의 기본 마진/패딩을 초기값 0으로 하고 박스모델 기준을 보더-박스로 한다. */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* 공통적인 부분 */
+body {
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  /* 줄 높이 */
+  line-height: 1.6;
+}
+
+ul {
+  /* 점삭제 */
+  list-style-type: none;
+}
+
+a {
+  /* 밑줄삭제 */
+  text-decoration: none;
+  color: #333;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+#aaa {
+  /* color: rgb(217, 255, 0); */
+  color: var(--success-color);
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;
+}
+
+code,
+pre {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.hidden {
+  /* 화면을 안 보이게 (지금 히든 클래스 없어서 안 보임)*/
+  visibility: hidden;
+  height: 0;
+}
+
+/* 네브바 메뉴 */
+.navbar {
+  background-color: var(--primary-color);
+  color: #fff;
+  height: 70px;
+}
+
+.navbar ul {
+  /* 일렬정렬 */
+  display: flex;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+/* 꼭 클래스 이름 먼저 적어주고 a태그붙이는식으로 해야 됨 a태그가 많아서*/
+
+
+.navbar a:hover {
+  /* 마우스올리면 밑에 줄 */
+  border-bottom: 2px #fff solid;
+}
+
+.navbar .flex {
+  /* cafe25와 홈특징문서 간 거리를 스페이스 비트윈을 적용 */
+  justify-content: space-between;
+}
+
+/* Showcase */
+.showcase {
+  height: 400px;
+  background-color: var(--primary-color);
+  color: #fff;
+  position: relative;
+}
+
+.showcase h1 {
+  font-size: 40px;
+}
+
+.showcase p {
+  /* 쇼케이스클래스 p 위아래 마진 */
+  margin: 20px 0;
+}
+
+.showcase .grid {
+  /* 쇼케이스 앞 부분이 다른 부분보다 더 크게 */
+  overflow: visible;
+  grid-template-columns: 55% auto;
+  /* 열과 열이나 행과 행 사이의 간격 */
+  gap: 30px;
+}
+
+.showcase-text {
+  /* 글자에 애니메이션이들어감 */
+  animation: slideInFromLeft 1s ease-in;
+}
+
+.showcase-form {
+  /* 현재위치에서 아래로 내렸다. */
+  position: relative;
+  top: 60px;
+  height: 350px;
+  width: 400px;
+  padding: 40px;
+  z-index: 100;
+  justify-self: flex-end;
+  animation: slideInFromRight 1s ease-in;
+}
+
+.showcase-form .form-control {
+  /* 이름 회사명 부분 한줄 간격 위 아래로 30 */
+  margin: 30px 0;
+}
+
+.showcase-form input[type='text'],
+.showcase-form input[type='email'] {
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+}
+
+.showcase-form input:focus {
+  /* 포커스될때 클릭했을 때 아웃라인 제거 */
+  outline: none;
+}
+
+.showcase::before,
+.showcase::after {
+  /* 가상클레스를 넣는다 흰색 뭐 찌그러진게 들어간다.*/
+  content: '';
+  position: absolute;
+  height: 100px;
+  bottom: -70px;
+  right: 0;
+  left: 0;
+  background: rgb(255, 255, 255);
+  /* 찌그러진거 */
+  /* 적용되는지 여부를 확인해야함 캔아이유즈 */
+  transform: skewY(-3deg);
+  /* 배포할때 검색해서 붙이는 것 */
+  -webkit-transform: skewY(-3deg);
+  -moz-transform: skewY(-3deg);
+  -ms-transform: skewY(-3deg);
+}
+
+/* Stats */
+.stats {
+  padding-top: 100px;
+  animation: slideInFromBottom 1s ease-in;
+}
+
+.stats-heading {
+  /* 500넘으면 내려오겠지? */
+  max-width: 500px;
+  margin: auto;
+}
+
+.stats .grid h3 {
+  font-size: 35px;
+}
+
+.stats .grid p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Cli */
+/* 총6칸 */
+.cli .grid {
+  /* 가로로 3칸 세로로 2칸 (2칸) */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+
+.cli .grid>*:first-child {
+  /* 이미지태그라서 div가 아니고 바로 아래에 있는 *(태그)앞부분이 많이 차지하게 (4칸) */
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+
+/* Cloud */
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+}
+
+/* Languages */
+
+.languages .flex {
+  flex-wrap: wrap;
+}
+
+.languages .card {
+  text-align: center;
+  margin: 18px 10px 40px;
+  transition: transform 0.2s ease-in;
+}
+
+.languages .card h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.languages .card:hover {
+  /* 마우스 올리면 위쪽으로 15픽셀 이동 위에 0.2초동안 */
+  transform: translateY(-15px);
+}
+
+/* 인텍스 페이지 끝 */
+
+/* 특징 페이지 시작 */
+/* 특징 페이지 */
+.features-head img,
+.docs-head img {
+  /* 사이즈 200px으로줄이고 */
+  width: 200px;
+  /* 그리드가 절반 나눠져 있는 상태인데 그리드에서도 플렉스 사용가능 뒤로 붙여줌 */
+  justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+}
+
+.features-main .card>i {
+  /* 카드 안에 아이콘이랑 글자사이 간격 마진을 조정 */
+  margin-right: 20px;
+}
+
+.features-main .grid {
+  padding: 30px;
+}
+
+/* first-child(1)같은말 */
+.features-main .grid>*:first-child {
+  grid-column: 1 / span 3;
+}
+
+.features-main .grid>*:nth-child(2) {
+  grid-column: 1 / span 2;
+}
+
+/* 세번째 페이지 문서 */
+/* 문서 페이지 */
+.docs-main h3 {
+  margin: 20px 0;
+}
+
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr;
+  /* 세로로 위쪽 정렬 */
+  align-items: flex-start;
+}
+
+.docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px #ccc solid;
+}
+
+
+.docs-main a:hover {
+  /* 마우스 올렸을 때 글자 굵기를 굵게한다 */
+  font-weight: bold;
+}
+
+/* 공통적인부분footer */
+/* Footer */
+/* 마우스 올렸을 때 해당 아이콘의 색이 바뀜 */
+.footer .social a {
+  margin: 0 10px;
+}
+
+.fa-github:hover {
+  color: #000000;
+}
+
+.fa-facebook:hover {
+  color: #1773ea;
+}
+
+.fa-instagram:hover {
+  color: #b32e87;
+}
+
+.fa-twitter:hover {
+  color: #1c9cea;
+}
+
+/* 애니메이션 */
+/* 왼쪽에서 오른쪽으로 */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 오른쪽에서 왼쪽으로 */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* 위에서 아래로 */
+/* @keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+} */
+
+/* 아래에서 위로 */
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
